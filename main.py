@@ -24,7 +24,7 @@ service = build('sheets', 'v4', credentials=credentials)
 
 # Your Google Sheet ID and the range you want to work with
 SPREADSHEET_ID = '10h9WEo_-mEJz-ICPh-aIvN3_tAHwmna11U4hC7AcYz4'
-SHEET_RANGE = 'Sheet1!A:G'  # Adjust the range as needed
+SHEET_RANGE = 'List of Donor!A:G'  # Adjust the range as needed and sheet Name
 
 def processSMS():
     data = message_store.get()    # the sms string from user input field
