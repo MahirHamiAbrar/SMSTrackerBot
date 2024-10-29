@@ -1,0 +1,12 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "js version of the python code",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "node main"
+  },
+  "author": "",
+  "license": "ISC"
+}
