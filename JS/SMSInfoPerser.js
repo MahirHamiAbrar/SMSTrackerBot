@@ -77,7 +77,7 @@ class SMSInfoParser {
 
     // load as a JSON object
     jsonResponse = JSON.parse(jsonResponse);
-    console.log(jsonResponse);
+    console.log(jsonResponse);  // print
   }
 }
 
