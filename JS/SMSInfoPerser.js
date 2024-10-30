@@ -4,7 +4,6 @@ import Groq from "groq-sdk";
 import { createRequire } from "node:module";
 // import the system prompt
 import { GROQ_SYSTEM_PROMPT_CONTENT } from "./prompts.js";
-import { json } from "node:stream/consumers";
 
 // create require method
 const require = createRequire(import.meta.url);
