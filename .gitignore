@@ -1,6 +1,7 @@
 ai-bot-credentials.json
 username-list.json
 credentials.json
-JS
+node_modules
+old
 .git
 .fleet
