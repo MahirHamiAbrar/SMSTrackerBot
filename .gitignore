@@ -5,6 +5,7 @@ old
 __pycache__
 node_modules
 
+JS/test.py
 unsloth.log
 credentials.json
 username-list.json
