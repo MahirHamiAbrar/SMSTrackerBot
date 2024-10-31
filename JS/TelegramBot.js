@@ -21,7 +21,9 @@ export function getUserFullName(user) {
 
 export async function launch_telegram_bot(work_func) {
     bot.on(message('text'), async (context) => work_func(context));
-    bot.launch();
+    bot.launch({
+        allowedUpdates: ["message", "message_reaction"]
+    });
 
     process.once('SIGINT', () => bot.stop('SIGINT'));
     process.once('SIGTERM', () => bot.stop('SIGTERM'));
