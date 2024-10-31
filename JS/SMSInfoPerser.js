@@ -1,30 +1,11 @@
 // import groq SDK
 import Groq from "groq-sdk";
-// import createRequire to use 'require' in ES modules!
-import { createRequire } from "node:module";
 // import the system prompt
 import { GROQ_SYSTEM_PROMPT_CONTENT } from "./prompts.js";
-
-// create require method
-const require = createRequire(import.meta.url);
-
-// now import the JSON credentials file
-const credentialData = require("../ai-bot-credentials.json");
-
-export async function getGroqChatCompletion() {
-  return groq.chat.completions.create({
-      messages: [
-        {
-          role: "user",
-          content: "Explain the importance of fast language models",
-        },
-      ],
-      model: "llama3-8b-8192",    
-  });
-}
+import { CONFIG_CREDENTIALS as credentialData } from "./utils.js";
 
 
-class SMSInfoParser {
+export class SMSInfoParser {
 
   constructor() {
     // some AI models according to the developer's preference!
@@ -76,7 +57,9 @@ class SMSInfoParser {
 
     // load as a JSON object
     jsonResponse = JSON.parse(jsonResponse);
-    console.log(jsonResponse);  // print
+    // console.log(jsonResponse);  // print
+
+    return jsonResponse;
   }
 }
 
@@ -93,8 +76,8 @@ export async function main() {
         Balance: Tk 205.22
         29/10/2024 12:03
   `;
-  parser.parseContent(sms);
+  const data = await parser.parseContent(sms);
+  console.log(data);
 }
 
-main();
-
+// await main();

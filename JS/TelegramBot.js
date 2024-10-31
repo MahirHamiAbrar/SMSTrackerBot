@@ -1,16 +1,15 @@
 import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
-import { createRequire } from "node:module";
-
-// make use of 'require' in ES modules
-const require = createRequire(import.meta.url);
-const _telegram_bot_token = require("../ai-bot-credentials.json");
+import { CONFIG_CREDENTIALS as _telegram_bot_token, choose_tp } from "./utils.js";
 
 const bot = new Telegraf(
-    _telegram_bot_token["telegram-bot-testing-service-access-token"]
+    _telegram_bot_token[choose_tp(
+        "telegram-bot-testing-service-access-token",
+        "telegram-bot-access-token"
+    )]
 );
 
-function getUserFullName(user) {
+export function getUserFullName(user) {
     var name = user.first_name;
 
     if (user.last_name) {
@@ -20,15 +19,10 @@ function getUserFullName(user) {
     return name;
 }
 
-bot.on(message('text'), async (context) => {    
-    // using context shortcut
-    await context.reply(`Hellow, ${getUserFullName(context.message.from)}`, {
-            reply_to_message_id: context.message.message_id
-        }
-    );
-});
+export async function launch_telegram_bot(work_func) {
+    bot.on(message('text'), async (context) => work_func(context));
+    bot.launch();
 
-bot.launch();
-
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+    process.once('SIGINT', () => bot.stop('SIGINT'));
+    process.once('SIGTERM', () => bot.stop('SIGTERM'));
+}

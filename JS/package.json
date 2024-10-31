@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MahirHamiAbrar/SMSTrackerBot/tree/main#readme",
   "dependencies": {
-    "groq-sdk": "^0.7.0"
+    "groq-sdk": "^0.7.0",
+    "telegraf": "^4.16.3"
   }
 }
