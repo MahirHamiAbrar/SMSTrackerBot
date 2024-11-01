@@ -13,6 +13,6 @@ export const CONFIG_CREDENTIALS = require('../credentials/ai-bot-credentials.jso
 // boolean variable 'TESTING_MODE_ON' in the JSON credentials file
 export function choose_tp(test, prod) {
     const test_mode_on = CONFIG_CREDENTIALS['TESTING-MODE-ON'];
-    console.log(test_mode_on);
+    // console.log(test_mode_on);
     return (test_mode_on ? test : prod);
 }

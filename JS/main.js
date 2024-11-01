@@ -32,10 +32,13 @@ async function botWorkerFunction(context) {
 
         // extract info from the result
         const timestamp = result['timestamp'];
-        const amount = result['received-tk'];
-        const phonenumber = result['phonenumber'];
+        const amount = result['received-amount'];
+        const phonenumber = result['sender'];
         // collect username from telegram bot
         const username = getUserFullName(context.message.from);
+        const isdigit = result['sender-has-number'];
+
+        console.log("Received AI Response: ", result);
         
         // create mutable variables for transaction ID and phonenumber
         // as they might change later on.
@@ -51,6 +54,10 @@ async function botWorkerFunction(context) {
 
             // handle special cases for traxid and last-4-digits of the phonenumber
             [trxid, last_4_digits] = handleSpecialCases(sms, trxid, last_4_digits);
+
+            if (!isdigit) {
+                last_4_digits = phonenumber;
+            }
 
             // create a reply message
             reply_text = `Username: ${username}\n` +
@@ -79,3 +86,7 @@ async function botWorkerFunction(context) {
 
 // launch the telegram bot and run indefinitely
 await launch_telegram_bot(botWorkerFunction);
+
+`
+You have received deposit from iBanking of Tk 5,000.00 from BRAC Bank Internet Banking. Fee Tk 0.00. Balance Tk 31,958.37. TrxID BK16VEMBXA at 01/11/2024 16:52
+`

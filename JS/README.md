@@ -10,10 +10,10 @@ This will launch the bot. But make sure to put `credentials.json` and `ai-bot-cr
 
 To obtain the `credentials.json` file for Google sheets service-account, See the official quickstart guide.
 
-You will also need telegram bot access token (use BotFather Telegram Bot to get it), and Groq API key. All these credentials are stored in the `ai-bot-credentials.json`. A dummy template is available in the `credentials` directory.
+You will also need telegram bot access token (find BotFather Telegram-Bot and send '/newbot' message and then follow the instructions), and Groq API key. All these credentials are stored in the `ai-bot-credentials.json`. A dummy template is available in the `credentials` directory.
 
 
-The Quickstart List:
+The Quickstart Guides List:
 - Google Sheets Quickstart Guide: https://developers.google.com/sheets/api/quickstart/nodejs
 - Groq Quickstart Guide: https://console.groq.com/docs/quickstart
 
